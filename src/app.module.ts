@@ -7,7 +7,6 @@ import { AuthorizationModule } from './components/usersComponent/authorization/a
 import { InitializerModule } from './components/initializerComponent/initializer/initializer.module';
 import { RefreshTokensModule } from './components/usersComponent/refresh-tokens/refresh-tokens.module';
 import { CompletedLessonsModule } from './components/lessonsComponent/completed-lessons/completed-lessons.module';
-import { CoursesModule } from './components/lessonsComponent/courses/courses.module';
 import { DaysModule } from './components/lessonsComponent/days/days.module';
 import { LessonsModule } from './components/lessonsComponent/lessons/lessons.module';
 import { LessonsInCoursesModule } from './components/lessonsComponent/lessonsInCourses/lessons-in-courses.module';

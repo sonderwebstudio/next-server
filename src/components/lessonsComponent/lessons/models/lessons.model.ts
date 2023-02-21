@@ -35,8 +35,8 @@ export class Lessons extends EntityModel<Lessons, LessonsCreationAttrs> {
   @Column({ type: DataType.STRING })
   deleted_at: string | null;
 
-  @Column({ type: DataType.NUMBER })
-  deleted_by: number | null;
+  @Column({ type: DataType.STRING })
+  deleted_by: string | null;
 
   @HasMany(() => CompletedLessons)
   completedLessons: CompletedLessons[];

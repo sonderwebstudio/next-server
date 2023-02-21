@@ -7,6 +7,7 @@ describe('Initializer (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
+    AppInitializer.jestSetTimeout();
     app = await AppGenerator.getApp();
     await AppInitializer.appInitialization();
     console.log(TokenGenerator.getSyntheticToken());

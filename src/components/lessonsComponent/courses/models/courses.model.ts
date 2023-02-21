@@ -7,7 +7,7 @@ interface CoursesCreationAttrs {
   image: string;
   description: string;
   deleted_at: string | null;
-  deleted_by: number | null;
+  deleted_by: string | null;
 }
 
 @Table({ tableName: 'Courses' })
@@ -32,8 +32,8 @@ export class Courses extends EntityModel<Courses, CoursesCreationAttrs> {
   @Column({ type: DataType.STRING })
   deleted_at: string | null;
 
-  @Column({ type: DataType.NUMBER })
-  deleted_by: number | null;
+  @Column({ type: DataType.STRING })
+  deleted_by: string | null;
 
   @HasMany(() => LessonsInCourses)
   lessonsInCourses: LessonsInCourses[];

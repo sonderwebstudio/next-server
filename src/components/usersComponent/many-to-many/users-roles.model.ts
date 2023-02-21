@@ -8,8 +8,11 @@ interface UsersRolesCreationAttrs {
   role_id: number;
 }
 
-@Table({tableName: 'UsersRoles'})
-export class UsersRoles extends EntityModel<UsersRoles, UsersRolesCreationAttrs> {
+@Table({ tableName: 'UsersRoles' })
+export class UsersRoles extends EntityModel<
+  UsersRoles,
+  UsersRolesCreationAttrs
+> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -19,10 +22,10 @@ export class UsersRoles extends EntityModel<UsersRoles, UsersRolesCreationAttrs>
   id: number;
 
   @ForeignKey(() => Users)
-  @Column({type: DataType.STRING})
+  @Column({ type: DataType.STRING })
   user_id: string;
 
   @ForeignKey(() => Roles)
-  @Column({type: DataType.INTEGER})
+  @Column({ type: DataType.INTEGER })
   role_id: number;
 }
