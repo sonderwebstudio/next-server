@@ -30,9 +30,10 @@ export class UsersService extends EntityService<Users> {
     dto.password = await UsersService.setPasswordToUser(dto.password);
 
     const id: string = randomUUID();
+
     const user: Users = await this.repository.create({id: id, ...dto});
 
-    const role: Roles = await this.rolesService.findByName(ROLES.USER);
+    const role: Roles = await this.rolesService.findByName(ROLES.USER);   
     await user.$set('roles', [role.id]);
 
     return user;

@@ -14,7 +14,7 @@ interface UserCreationAttrs {
   id: string;
   email: string;
   password: string;
-  start_of_subscription: string | null ;
+  start_of_subscription: string | null;
   end_of_subscription: string | null;
   banned_at: string | null;
   banned_by: number | null;
@@ -35,17 +35,17 @@ export class Users extends EntityModel<Users, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
 
+  @Column({ type: DataType.INTEGER })
+  banned_by: number | null;
+
+  @Column({ type: DataType.STRING })
+  banned_at: string | null;
+
   @Column({ type: DataType.STRING })
   start_of_subscription: string | null;
 
   @Column({ type: DataType.STRING })
   end_of_subscription: string | null;
-
-  @Column({ type: DataType.STRING })
-  banned_at: string | null;
-
-  @Column({ type: DataType.NUMBER })
-  banned_by: number | null;
 
   @BelongsToMany(() => Roles, () => UsersRoles)
   roles: Roles[];
