@@ -8,7 +8,7 @@ import {
 import { Roles } from '../../roles/models/roles.model';
 import { UsersRoles } from '../../many-to-many/users-roles.model';
 import { EntityModel } from '../../../../classes/core/entity.model';
-import { CompletedLessons } from '../../../../components/lessonsComponent/completed-lessons/models/completed-lessons.model';
+import { CompletedLessons } from '../../../lessonsComponent/completed-lessons/models/completed-lessons.model';
 
 interface UserCreationAttrs {
   id: string;
@@ -17,7 +17,7 @@ interface UserCreationAttrs {
   start_of_subscription: string | null;
   end_of_subscription: string | null;
   banned_at: string | null;
-  banned_by: number | null;
+  banned_by: string | null;
 }
 
 @Table({ tableName: 'Users' })
@@ -47,6 +47,15 @@ export class Users extends EntityModel<Users, UserCreationAttrs> {
   @Column({ type: DataType.STRING })
   end_of_subscription: string | null;
 
+<<<<<<< HEAD
+=======
+  @Column({ type: DataType.STRING })
+  banned_at: string | null;
+
+  @Column({ type: DataType.STRING })
+  banned_by: string | null;
+
+>>>>>>> c60680709809ff31c16e78f211708c9a328cd5dd
   @BelongsToMany(() => Roles, () => UsersRoles)
   roles: Roles[];
 

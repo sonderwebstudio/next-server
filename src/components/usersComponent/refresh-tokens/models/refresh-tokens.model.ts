@@ -1,4 +1,10 @@
-import { BelongsTo, Column, DataType, ForeignKey, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Table,
+} from 'sequelize-typescript';
 import { Users } from '../../users/models/users.model';
 import { EntityModel } from '../../../../classes/core/entity.model';
 
@@ -7,8 +13,11 @@ interface RefreshTokenCreationAttrs {
   token: string;
 }
 
-@Table({tableName: 'RefreshTokens'})
-export class RefreshTokens extends EntityModel<RefreshTokens, RefreshTokenCreationAttrs> {
+@Table({ tableName: 'RefreshTokens' })
+export class RefreshTokens extends EntityModel<
+  RefreshTokens,
+  RefreshTokenCreationAttrs
+> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -17,11 +26,11 @@ export class RefreshTokens extends EntityModel<RefreshTokens, RefreshTokenCreati
   })
   id: number;
 
-  @Column({type: DataType.STRING, unique: true})
+  @Column({ type: DataType.STRING, unique: true })
   token: string;
 
   @ForeignKey(() => Users)
-  @Column({type: DataType.STRING})
+  @Column({ type: DataType.STRING })
   user_id: string;
 
   @BelongsTo(() => Users)

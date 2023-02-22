@@ -7,7 +7,7 @@ interface RoleCreationAttrs {
   name: string;
 }
 
-@Table({tableName: 'Roles'})
+@Table({ tableName: 'Roles' })
 export class Roles extends EntityModel<Roles, RoleCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
@@ -17,7 +17,7 @@ export class Roles extends EntityModel<Roles, RoleCreationAttrs> {
   })
   id: number;
 
-  @Column({type: DataType.STRING, unique: true, allowNull: false})
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
   name: string;
 
   @BelongsToMany(() => Users, () => UsersRoles)

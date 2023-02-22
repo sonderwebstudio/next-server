@@ -15,6 +15,6 @@ export class AppInitializer {
   }
 
   static jestSetTimeout() {
-    jest.setTimeout(120000);
+    jest.setTimeout(100000);
   }
 }
