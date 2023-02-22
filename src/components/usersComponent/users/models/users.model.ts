@@ -35,8 +35,8 @@ export class Users extends EntityModel<Users, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
 
-  @Column({ type: DataType.INTEGER })
-  banned_by: number | null;
+  @Column({ type: DataType.STRING })
+  banned_by: string | null;
 
   @Column({ type: DataType.STRING })
   banned_at: string | null;
@@ -47,15 +47,6 @@ export class Users extends EntityModel<Users, UserCreationAttrs> {
   @Column({ type: DataType.STRING })
   end_of_subscription: string | null;
 
-<<<<<<< HEAD
-=======
-  @Column({ type: DataType.STRING })
-  banned_at: string | null;
-
-  @Column({ type: DataType.STRING })
-  banned_by: string | null;
-
->>>>>>> c60680709809ff31c16e78f211708c9a328cd5dd
   @BelongsToMany(() => Roles, () => UsersRoles)
   roles: Roles[];
 

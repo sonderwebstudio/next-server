@@ -32,13 +32,8 @@ export class Courses extends EntityModel<Courses, CoursesCreationAttrs> {
   @Column({ type: DataType.STRING })
   deleted_at: string | null;
 
-<<<<<<< HEAD
-  @Column({ type: DataType.INTEGER })
-  deleted_by: number | null;
-=======
   @Column({ type: DataType.STRING })
   deleted_by: string | null;
->>>>>>> c60680709809ff31c16e78f211708c9a328cd5dd
 
   @HasMany(() => LessonsInCourses)
   lessonsInCourses: LessonsInCourses[];
