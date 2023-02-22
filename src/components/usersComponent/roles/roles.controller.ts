@@ -13,7 +13,7 @@ export class RolesController {
   }
 
   @UsePipes(ValidationPipe)
-  // @RolesGuards([ROLES.ADMIN])
+  @RolesGuards([ROLES.ADMIN])
   @Post()
   async create(
     @Body() dto: CreateRolesDto,
