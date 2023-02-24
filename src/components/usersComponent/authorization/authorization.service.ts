@@ -50,9 +50,8 @@ export class AuthorizationService {
     }
 
     const userData = await this.token.validateRefreshToken(refreshToken);
-    const tokenFromDB = await this.refreshTokensService.findToken(refreshToken);
 
-    if (!userData || !tokenFromDB) {
+    if (!userData) {
       throw new UnauthorizedException({
         message: 'The user is not logged in',
         statusCode: HttpStatus.UNAUTHORIZED,
@@ -65,7 +64,7 @@ export class AuthorizationService {
 
     return {
       user: this.token.getPayload(user),
-      accessToken: tokens.accessToken,
+      ...tokens,
     };
   }
 

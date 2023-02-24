@@ -10,9 +10,11 @@ import { CompletedLessonsModule } from './components/lessonsComponent/completed-
 import { DaysModule } from './components/lessonsComponent/days/days.module';
 import { LessonsModule } from './components/lessonsComponent/lessons/lessons.module';
 import { LessonsInCoursesModule } from './components/lessonsComponent/lessonsInCourses/lessons-in-courses.module';
-import { LessonsInDaysModule } from './components/lessonsComponent/lessonsInDays/lessons-in-days.module';
-import { LessonsInWeeksModule } from './components/lessonsComponent/lessonsInWeeks/lessons-in-weeks.module';
 import { WeeksModule } from './components/lessonsComponent/weeks/weeks.module';
+import { FilesModule } from './components/filesComponent/files/files.module';
+import { CoursesModule } from './components/lessonsComponent/courses/courses.module';
+import { LessonSchedule } from './components/lessonsComponent/lessonsSchedule/models/lesson-schedule.model';
+import { LessonScheduleModule } from './components/lessonsComponent/lessonsSchedule/lesson-schedule.module';
 
 @Module({
   imports: [
@@ -39,14 +41,15 @@ import { WeeksModule } from './components/lessonsComponent/weeks/weeks.module';
     InitializerModule,
     RefreshTokensModule,
     RolesModule,
-    UsersModule, 
+    UsersModule,
     CompletedLessonsModule,
     LessonsModule,
+    CoursesModule,
     LessonsInCoursesModule,
-    LessonsInWeeksModule,
-    LessonsInDaysModule,
     WeeksModule,
     DaysModule,
+    FilesModule,
+    LessonScheduleModule,
   ],
 })
 export class AppModule {}
