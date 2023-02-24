@@ -8,5 +8,5 @@ export class CreateCompletedLessonsDto {
   user_id: string;
 
   @IsNumber({}, { message: 'The value must be a number' })
-  lesson_id: number;
+  lesson_schedule_id: number;
 }

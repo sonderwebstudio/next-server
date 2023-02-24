@@ -11,4 +11,10 @@ export class CompletedLessonsService extends EntityService<CompletedLessons> {
   ) {
     super(repository);
   }
+
+  async findByScheduleId(id: number) {
+    return await this.repository.findOne({
+      where: { lesson_schedule_id: id },
+    });
+  }
 }

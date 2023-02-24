@@ -1,29 +1,29 @@
 import { Test } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/sequelize';
-import { LessonsInWeeksService } from '../lessons-in-weeks.service';
-import { LessonsInWeeks } from '../models/lessons-in-weeks.model';
-import { LessonsInWeeksModel } from '../__mocks__/lessons-in-weeks.model';
-import { lessonsInWeeksStub } from './stubs/lessons-in-weeks.stub';
-import { lessonsInWeeksUpdateStub } from './stubs/lessons-in-weeks-update.stub';
-import { lessonsInWeeksCreateStub } from './stubs/lessons-in-weeks-create.stub';
+import { LessonScheduleModel } from '../__mocks__/lesson-schedule.model';
+import { lessonScheduleStub } from './stubs/lesson-schedule.stub';
+import { LessonScheduleService } from '../lesson-schedule.service';
+import { LessonSchedule } from '../models/lesson-schedule.model';
+import { lessonScheduleCreateStub } from './stubs/lesson-schedule-create.stub';
+import { lessonScheduleUpdateStub } from './stubs/lesson-schedule-update.stub';
 
-describe('LessonsInWeeksService', () => {
-  let service: LessonsInWeeksService;
-  let model: typeof LessonsInWeeks;
+describe('LessonScheduleService', () => {
+  let service: LessonScheduleService;
+  let model: typeof LessonSchedule;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        LessonsInWeeksService,
+        LessonScheduleService,
         {
-          provide: getModelToken(LessonsInWeeks),
-          useValue: LessonsInWeeksModel,
+          provide: getModelToken(LessonSchedule),
+          useValue: LessonScheduleModel,
         },
       ],
     }).compile();
 
-    service = module.get<LessonsInWeeksService>(LessonsInWeeksService);
-    model = module.get<typeof LessonsInWeeks>(getModelToken(LessonsInWeeks));
+    service = module.get<LessonScheduleService>(LessonScheduleService);
+    model = module.get<typeof LessonSchedule>(getModelToken(LessonSchedule));
   });
 
   it('should be defined', () => {
@@ -36,18 +36,18 @@ describe('LessonsInWeeksService', () => {
     });
 
     describe('when create is called', () => {
-      let client: LessonsInWeeks;
+      let completedLesson: LessonSchedule;
 
       beforeEach(async () => {
-        client = await service.create(lessonsInWeeksCreateStub());
+        completedLesson = await service.create(lessonScheduleCreateStub());
       });
 
       it('should call model create', () => {
         expect(model.create).toBeCalled();
       });
 
-      it('should return a client', () => {
-        expect(client).toBeDefined();
+      it('should return a completedLesson', () => {
+        expect(completedLesson).toBeDefined();
       });
     });
   });
@@ -58,18 +58,18 @@ describe('LessonsInWeeksService', () => {
     });
 
     describe('when findAll is called', () => {
-      let lessonsInWeeks: LessonsInWeeks[];
+      let lessonSchedule: LessonSchedule[];
 
       beforeEach(async () => {
-        lessonsInWeeks = await service.findAll();
+        lessonSchedule = await service.findAll();
       });
 
       it('should call model findAll', () => {
         expect(model.findAll).toBeCalled();
       });
 
-      it('should return a lessonsInWeeks', () => {
-        expect(lessonsInWeeks).toEqual([lessonsInWeeksStub()]);
+      it('should return a lessonSchedule', () => {
+        expect(lessonSchedule).toEqual([lessonScheduleStub()]);
       });
     });
   });
@@ -80,18 +80,18 @@ describe('LessonsInWeeksService', () => {
     });
 
     describe('when findByPk is called', () => {
-      let client: LessonsInWeeks;
+      let completedLesson: LessonSchedule;
 
       beforeEach(async () => {
-        client = await service.findByPk(lessonsInWeeksStub().id);
+        completedLesson = await service.findByPk(lessonScheduleStub().id);
       });
 
       it('should call model findByPk', () => {
         expect(model.findByPk).toBeCalled();
       });
 
-      it('should return a client', () => {
-        expect(client).toEqual(lessonsInWeeksStub());
+      it('should return a completedLesson', () => {
+        expect(completedLesson).toEqual(lessonScheduleStub());
       });
     });
   });
@@ -105,7 +105,7 @@ describe('LessonsInWeeksService', () => {
       let result: number[];
 
       beforeEach(async () => {
-        result = await service.update(lessonsInWeeksUpdateStub());
+        result = await service.update(lessonScheduleUpdateStub());
       });
 
       it('should call model update', () => {
@@ -127,7 +127,7 @@ describe('LessonsInWeeksService', () => {
       let result: number;
 
       beforeEach(async () => {
-        result = await service.destroy(lessonsInWeeksStub().id);
+        result = await service.destroy(lessonScheduleStub().id);
       });
 
       it('should call model destroy', () => {

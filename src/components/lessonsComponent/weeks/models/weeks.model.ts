@@ -1,6 +1,6 @@
 import { Column, DataType, HasMany, Table } from 'sequelize-typescript';
 import { EntityModel } from '../../../../classes/core/entity.model';
-import { LessonsInWeeks } from '../../lessonsInWeeks/models/lessons-in-weeks.model';
+import { LessonSchedule } from '../../lessonsSchedule/models/lesson-schedule.model';
 
 interface WeeksCreationAttrs {
   name: string;
@@ -19,6 +19,6 @@ export class Weeks extends EntityModel<Weeks, WeeksCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 
-  @HasMany(() => LessonsInWeeks)
-  lessonsInWeeks: LessonsInWeeks[];
+  @HasMany(() => LessonSchedule)
+  lessonSchedule: LessonSchedule[];
 }

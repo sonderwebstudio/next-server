@@ -21,7 +21,7 @@ import { RolesGuards } from '../../../decorators/roles-guards.decorator';
 export class CompletedLessonsController {
   constructor(private service: CompletedLessonsService) {}
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
@@ -33,7 +33,7 @@ export class CompletedLessonsController {
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
     response: CompletedLessons[];
@@ -45,7 +45,18 @@ export class CompletedLessonsController {
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
+  @Get('/schedule/:id')
+  async findBySchedule(
+    @Param('id') id: number,
+  ): Promise<{ response: CompletedLessons; statusCode: number }> {
+    return {
+      statusCode: HttpStatus.OK,
+      response: await this.service.findByScheduleId(id),
+    };
+  }
+
+  // @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(
     @Param('id') id: number,
@@ -56,8 +67,7 @@ export class CompletedLessonsController {
     };
   }
 
-
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(

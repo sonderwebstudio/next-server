@@ -21,7 +21,7 @@ import { UpdateLessonsInCoursesDto } from './dto/update-lessons-in-courses.dto';
 export class LessonsInCoursesController {
   constructor(private service: LessonsInCoursesService) {}
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
@@ -33,7 +33,7 @@ export class LessonsInCoursesController {
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
     response: LessonsInCourses[];
@@ -45,18 +45,24 @@ export class LessonsInCoursesController {
     };
   }
 
-  @RolesGuards([ROLES.USER])
-  @Get('/:id')
-  async findByPk(
-    @Param('id') id: number,
-  ): Promise<{ response: LessonsInCourses; statusCode: number }> {
+  // @RolesGuards([ROLES.USER])
+  @Get('/course/:id')
+  async findByClientId(@Param('id') id: string) {
     return {
       statusCode: HttpStatus.OK,
-      response: await this.service.findByPk(id),
+      response: await this.service.findByCourseId(id),
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  @Get('/course-sorted/:id')
+  async getSortedCourse(@Param('id') id: string) {
+    return {
+      statusCode: HttpStatus.OK,
+      response: await this.service.getSortedCourse(id),
+    };
+  }
+
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(

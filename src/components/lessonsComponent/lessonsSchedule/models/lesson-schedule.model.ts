@@ -1,19 +1,29 @@
-import { Column, DataType, ForeignKey, Table } from 'sequelize-typescript';
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  Table,
+} from 'sequelize-typescript';
 import { EntityModel } from '../../../../classes/core/entity.model';
+import { CompletedLessons } from '../../completed-lessons/models/completed-lessons.model';
 import { Days } from '../../days/models/days.model';
 import { Lessons } from '../../lessons/models/lessons.model';
+import { Weeks } from '../../weeks/models/weeks.model';
 
-interface LessonsInDaysCreationAttrs {
+interface LessonScheduleCreationAttrs {
   lesson_id: number;
+  week_id: number;
   day_id: number;
   deleted_at: string | null;
   deleted_by: string | null;
 }
 
-@Table({ tableName: 'LessonsInDays' })
-export class LessonsInDays extends EntityModel<
-  LessonsInDays,
-  LessonsInDaysCreationAttrs
+@Table({ tableName: 'LessonSchedule' })
+export class LessonSchedule extends EntityModel<
+  LessonSchedule,
+  LessonScheduleCreationAttrs
 > {
   @Column({
     type: DataType.INTEGER,
@@ -33,7 +43,20 @@ export class LessonsInDays extends EntityModel<
   @Column({ type: DataType.INTEGER, allowNull: false })
   lesson_id: number;
 
+  @ForeignKey(() => Weeks)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  week_id: number;
+
   @ForeignKey(() => Days)
   @Column({ type: DataType.INTEGER, allowNull: false })
   day_id: number;
+
+  @HasMany(() => CompletedLessons)
+  completedLessons: CompletedLessons[];
+
+  @BelongsTo(() => Lessons)
+  lesson: Lessons;
+
+  @BelongsTo(() => Days)
+  day: Days;
 }

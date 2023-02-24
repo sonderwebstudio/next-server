@@ -1,17 +1,17 @@
-import { lessonsInWeeksStub } from '../test/stubs/lessons-in-weeks.stub';
+import { lessonScheduleStub } from '../test/stubs/lesson-schedule.stub';
 
-export const LessonsInWeeksModel = {
+export const LessonScheduleModel = {
   create: jest.fn().mockImplementation(() => {
-    return lessonsInWeeksStub();
+    return lessonScheduleStub();
   }),
   findAll: jest.fn().mockImplementation(() => {
-    return [lessonsInWeeksStub()];
+    return [lessonScheduleStub()];
   }),
   findOne: jest.fn().mockImplementation(() => {
-    return lessonsInWeeksStub();
+    return lessonScheduleStub();
   }),
   findByPk: jest.fn().mockImplementation(() => {
-    return lessonsInWeeksStub();
+    return lessonScheduleStub();
   }),
   update: jest.fn().mockImplementation(() => {
     return 1;

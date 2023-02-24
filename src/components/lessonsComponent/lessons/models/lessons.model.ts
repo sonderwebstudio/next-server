@@ -1,9 +1,7 @@
 import { Column, DataType, HasMany, Table } from 'sequelize-typescript';
 import { EntityModel } from '../../../../classes/core/entity.model';
-import { CompletedLessons } from '../../completed-lessons/models/completed-lessons.model';
 import { LessonsInCourses } from '../../lessonsInCourses/models/lessons-in-courses.model';
-import { LessonsInDays } from '../../lessonsInDays/models/lessons-in-days.model';
-import { LessonsInWeeks } from '../../lessonsInWeeks/models/lessons-in-weeks.model';
+import { LessonSchedule } from '../../lessonsSchedule/models/lesson-schedule.model';
 
 interface LessonsCreationAttrs {
   name: string;
@@ -38,15 +36,9 @@ export class Lessons extends EntityModel<Lessons, LessonsCreationAttrs> {
   @Column({ type: DataType.STRING })
   deleted_by: string | null;
 
-  @HasMany(() => CompletedLessons)
-  completedLessons: CompletedLessons[];
-
   @HasMany(() => LessonsInCourses)
   lessonInCourses: LessonsInCourses[];
 
-  @HasMany(() => LessonsInWeeks)
-  lessonInWeeks: LessonsInWeeks[];
-
-  @HasMany(() => LessonsInDays)
-  lessonInDays: LessonsInDays[];
+  @HasMany(() => LessonSchedule)
+  lessonSchedule: LessonSchedule[];
 }

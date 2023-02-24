@@ -1,14 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { LessonSchedule } from './models/lesson-schedule.model';
 import { EntityService } from '../../../classes/core/entity.service';
-import { LessonsInDays } from './models/lessons-in-days.model';
 
 @Injectable()
-export class LessonsInDaysService extends EntityService<LessonsInDays> {
+export class LessonScheduleService extends EntityService<LessonSchedule> {
   constructor(
-    @InjectModel(LessonsInDays)
-    protected repository: typeof LessonsInDays,
+    @InjectModel(LessonSchedule)
+    protected repository: typeof LessonSchedule,
   ) {
     super(repository);
   }
+
+  
 }

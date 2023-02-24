@@ -9,34 +9,34 @@ import {
   Put,
   UsePipes,
 } from '@nestjs/common';
+import { LessonScheduleService } from './lesson-schedule.service';
+import { LessonSchedule } from './models/lesson-schedule.model';
 import { ValidationPipe } from '../../../pipes/validation.pipe';
+import { CreateLessonScheduleDto } from './dto/create-lesson-schedule.dto';
+import { UpdateLessonScheduleDto } from './dto/update-lesson-schedule.dto';
 import { ROLES } from '../../../constants/roles.constants';
 import { RolesGuards } from '../../../decorators/roles-guards.decorator';
-import { CreateLessonsInDaysDto } from './dto/create-lessons-in-days.dto';
-import { LessonsInDays } from './models/lessons-in-days.model';
-import { LessonsInDaysService } from './lessons-in-days.service';
-import { UpdateLessonsInDaysDto } from './dto/update-lessons-in-days.dto';
 
-@Controller('/api/lessons-in-days')
-export class LessonsInDaysController {
-  constructor(private service: LessonsInDaysService) {}
+@Controller('/api/lesson-schedule')
+export class LessonScheduleController {
+  constructor(private service: LessonScheduleService) {}
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
-    @Body() dto: CreateLessonsInDaysDto,
-  ): Promise<{ response: LessonsInDays; statusCode: HttpStatus.CREATED }> {
+    @Body() dto: CreateLessonScheduleDto,
+  ): Promise<{ response: LessonSchedule; statusCode: HttpStatus.CREATED }> {
     return {
       statusCode: HttpStatus.CREATED,
       response: await this.service.create(dto),
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
-    response: LessonsInDays[];
+    response: LessonSchedule[];
     statusCode: number;
   }> {
     return {
@@ -45,22 +45,22 @@ export class LessonsInDaysController {
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(
     @Param('id') id: number,
-  ): Promise<{ response: LessonsInDays; statusCode: number }> {
+  ): Promise<{ response: LessonSchedule; statusCode: number }> {
     return {
       statusCode: HttpStatus.OK,
       response: await this.service.findByPk(id),
     };
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(
-    @Body() dto: UpdateLessonsInDaysDto,
+    @Body() dto: UpdateLessonScheduleDto,
   ): Promise<{ response: number[]; statusCode: number }> {
     return {
       statusCode: HttpStatus.OK,

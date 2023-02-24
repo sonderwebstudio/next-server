@@ -1,11 +1,11 @@
 import { Column, DataType, ForeignKey, Table } from 'sequelize-typescript';
 import { Users } from '../../../usersComponent/users/models/users.model';
 import { EntityModel } from '../../../../classes/core/entity.model';
-import { Lessons } from '../../lessons/models/lessons.model';
+import { LessonSchedule } from '../../lessonsSchedule/models/lesson-schedule.model';
 
 interface CompletedLessonsCreationAttrs {
-  lesson_id: number;
   user_id: string;
+  lesson_schedule_id: number;
   deleted_at: string | null;
   deleted_by: string | null;
 }
@@ -33,7 +33,7 @@ export class CompletedLessons extends EntityModel<
   @Column({ type: DataType.STRING, allowNull: false })
   user_id: string;
 
-  @ForeignKey(() => Lessons)
+  @ForeignKey(() => LessonSchedule)
   @Column({ type: DataType.INTEGER, allowNull: false })
-  lesson_id: number;
+  lesson_schedule_id: number;
 }
