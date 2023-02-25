@@ -57,6 +57,18 @@ export class CompletedLessonsController {
   }
 
   // @RolesGuards([ROLES.USER])
+  @Get('/all-schedule')
+  async findAllBySchedule(): Promise<{
+    response: number[];
+    statusCode: number;
+  }> {
+    return {
+      statusCode: HttpStatus.OK,
+      response: await this.service.findAllBySchedule(),
+    };
+  }
+
+  // @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(
     @Param('id') id: number,

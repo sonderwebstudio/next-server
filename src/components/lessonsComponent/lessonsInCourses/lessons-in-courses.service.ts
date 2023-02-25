@@ -46,22 +46,22 @@ export class LessonsInCoursesService extends EntityService<LessonsInCourses> {
     });
 
     const lessons = await Promise.all(
-      courses.map(
-        async (course) =>
-          await LessonSchedule.findOne({
-            where: {
-              lesson_id: course.lesson_id,
+      courses.map(async (course) => {
+        const lesson = await LessonSchedule.findOne({
+          where: {
+            lesson_id: course.lesson_id,
+          },
+          include: [
+            {
+              model: Lessons,
             },
-            include: [
-              {
-                model: Lessons,
-              },
-              {
-                model: Days,
-              },
-            ],
-          }),
-      ),
+            {
+              model: Days,
+            },
+          ],
+        });
+        return lesson;
+      }),
     );
 
     const groupedLessonsByWeek = lessons.reduce((acc, lesson) => {
@@ -85,6 +85,10 @@ export class LessonsInCoursesService extends EntityService<LessonsInCourses> {
       return groupedLessonsByDay;
     });
 
-    return sortedLessonsByWeek;
+    const filteredLessons = sortedLessonsByWeek.map((weekLessons) =>
+      weekLessons.filter((dayLessons) => dayLessons.length > 0),
+    );
+
+    return filteredLessons;
   }
 }

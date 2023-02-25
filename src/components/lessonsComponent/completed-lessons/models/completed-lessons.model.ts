@@ -10,6 +10,7 @@ interface CompletedLessonsCreationAttrs {
   deleted_by: string | null;
 }
 
+
 @Table({ tableName: 'CompletedLessons' })
 export class CompletedLessons extends EntityModel<
   CompletedLessons,
