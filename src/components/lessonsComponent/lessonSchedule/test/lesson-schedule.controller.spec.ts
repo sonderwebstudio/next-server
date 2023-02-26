@@ -7,7 +7,7 @@ import { LessonSchedule } from '../models/lesson-schedule.model';
 import { lessonScheduleCreateStub } from './stubs/lesson-schedule-create.stub';
 import { lessonScheduleUpdateStub } from './stubs/lesson-schedule-update.stub';
 
-jest.mock('../completed-lessons.service');
+jest.mock('../lesson-schedule.service');
 
 describe('LessonScheduleController', () => {
   let controller: LessonScheduleController;
@@ -35,10 +35,10 @@ describe('LessonScheduleController', () => {
     });
 
     describe('when create is called', () => {
-      let completedLesson: LessonSchedule;
+      let lessonInCourse: LessonSchedule;
 
       beforeEach(async () => {
-        completedLesson = (await controller.create(lessonScheduleCreateStub()))
+        lessonInCourse = (await controller.create(lessonScheduleCreateStub()))
           .response;
       });
 
@@ -46,8 +46,8 @@ describe('LessonScheduleController', () => {
         expect(service.create).toBeCalledWith(lessonScheduleCreateStub());
       });
 
-      it('should return a completedLesson', () => {
-        expect(completedLesson).toEqual(lessonScheduleStub());
+      it('should return a lessonInCourse', () => {
+        expect(lessonInCourse).toEqual(lessonScheduleStub());
       });
     });
   });
@@ -80,10 +80,10 @@ describe('LessonScheduleController', () => {
     });
 
     describe('when findByPk is called', () => {
-      let completedLesson: LessonSchedule;
+      let lessonInCourse: LessonSchedule;
 
       beforeEach(async () => {
-        completedLesson = (await controller.findByPk(lessonScheduleStub().id))
+        lessonInCourse = (await controller.findByPk(lessonScheduleStub().id))
           .response;
       });
 
@@ -91,8 +91,8 @@ describe('LessonScheduleController', () => {
         expect(service.findByPk).toBeCalledWith(lessonScheduleStub().id);
       });
 
-      it('should return a completedLesson', () => {
-        expect(completedLesson).toEqual(lessonScheduleStub());
+      it('should return a lessonInCourse', () => {
+        expect(lessonInCourse).toEqual(lessonScheduleStub());
       });
     });
   });

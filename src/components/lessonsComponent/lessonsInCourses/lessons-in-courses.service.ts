@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { EntityService } from '../../../classes/core/entity.service';
 import { Days } from '../days/models/days.model';
 import { Lessons } from '../lessons/models/lessons.model';
-import { LessonSchedule } from '../lessonsSchedule/models/lesson-schedule.model';
+import { LessonSchedule } from '../lessonSchedule/models/lesson-schedule.model';
 import { LessonsInCourses } from './models/lessons-in-courses.model';
 
 @Injectable()

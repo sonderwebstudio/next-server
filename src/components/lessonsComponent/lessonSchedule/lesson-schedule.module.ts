@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { LessonScheduleService } from './lesson-schedule.service';
-import { LessonScheduleController } from './lesson-schedule.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { LessonScheduleController } from './lesson-schedule.controller';
+import { LessonScheduleService } from './lesson-schedule.service';
 import { LessonSchedule } from './models/lesson-schedule.model';
 
 @Module({

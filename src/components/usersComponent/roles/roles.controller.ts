@@ -13,7 +13,7 @@ export class RolesController {
   }
 
   @UsePipes(ValidationPipe)
-  // @RolesGuards([ROLES.ADMIN])
+  @RolesGuards([ROLES.ADMIN])
   @Post()
   async create(
     @Body() dto: CreateRolesDto,
@@ -24,7 +24,7 @@ export class RolesController {
     };
   }
 
-  // @RolesGuards([ROLES.ADMIN])
+  @RolesGuards([ROLES.ADMIN])
   @Get()
   async findAll(): Promise<{response: Roles[]; statusCode: number}> {
     return {

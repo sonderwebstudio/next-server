@@ -1,12 +1,12 @@
 import { IsNumber } from 'class-validator';
 
-export class UpdateLessonScheduleDto {
+export class CreateLessonScheduleDto {
   @IsNumber({}, { message: 'The value must be a number' })
-  lesson_id: number;
+  readonly lesson_id: number;
 
   @IsNumber({}, { message: 'The value must be a number' })
-  week_id: number;
+  readonly day_id: number;
 
   @IsNumber({}, { message: 'The value must be a number' })
-  day_id: number;
+  readonly week_id: number;
 }

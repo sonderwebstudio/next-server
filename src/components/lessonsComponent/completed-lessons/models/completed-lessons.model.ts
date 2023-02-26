@@ -1,7 +1,7 @@
 import { Column, DataType, ForeignKey, Table } from 'sequelize-typescript';
 import { Users } from '../../../usersComponent/users/models/users.model';
 import { EntityModel } from '../../../../classes/core/entity.model';
-import { LessonSchedule } from '../../lessonsSchedule/models/lesson-schedule.model';
+import { LessonSchedule } from '../../lessonSchedule/models/lesson-schedule.model';
 
 interface CompletedLessonsCreationAttrs {
   user_id: string;

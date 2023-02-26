@@ -3,25 +3,27 @@ import { RolesService } from '../../usersComponent/roles/roles.service';
 import { ROLES } from '../../../constants/roles.constants';
 import { UsersService } from '../../usersComponent/users/users.service';
 import { Users } from '../../usersComponent/users/models/users.model';
+import { Roles } from '../../../components/usersComponent/roles/models/roles.model';
+import { WeeksService } from '../../../components/lessonsComponent/weeks/weeks.service';
 
-// TODO: вынести всё в Seeds
 @Injectable()
 export class InitializerService {
   constructor(
     private rolesService: RolesService,
     private usersService: UsersService,
-  ) {
-  }
+    private weeksService: WeeksService,
+  ) {}
 
   async initialization() {
     await InitializerService.findOrCreateSimpleConstants([
-      {service: this.rolesService, constants: ROLES},
+      { service: this.rolesService, constants: ROLES },
     ]);
 
     await InitializerService.findOrCreateDifficultConstants([]);
 
     await this.findOrCreateAdminAccount();
     await this.findOrCreateUserAccount();
+    await this.createWeeks();
   }
 
   private static async findOrCreateSimpleConstants(data) {
@@ -55,13 +57,21 @@ export class InitializerService {
           );
 
           if (this.checkingForNull(constant)) {
-            const obj = {name: data[i].mainConstants[category][key]};
+            const obj = { name: data[i].mainConstants[category][key] };
             obj[data[i].foreignKey] = data[i].secondConstants[category];
 
-            await this.createConstant(data[i].mainService, {...obj});
+            await this.createConstant(data[i].mainService, { ...obj });
           }
         }
       }
+    }
+  }
+
+  private async createWeeks() {
+    for (let i = 1; i <= 14; i++) {
+      await this.weeksService.create({
+        name: `Неделя ${i}`,
+      });
     }
   }
 
@@ -77,8 +87,17 @@ export class InitializerService {
     service.create(data);
   }
 
+  private static async findByEmail(email: string): Promise<Users> {
+    const user = await Users.findOne({
+      where: { email: email },
+      include: { model: Roles },
+    });
+
+    return user;
+  }
+
   private async findOrCreateAdminAccount() {
-    const account = await this.usersService.findByEmail('admin@gmail.com');
+    const account = await InitializerService.findByEmail('admin@gmail.com');
 
     if (account === null) {
       const user: Users = await this.usersService.create({
@@ -94,8 +113,7 @@ export class InitializerService {
   }
 
   private async findOrCreateUserAccount() {
-    const account = await this.usersService.findByEmail('user@gmail.com');
-
+    const account = await InitializerService.findByEmail('user@gmail.com');
     if (account === null) {
       await this.usersService.create({
         email: 'user@gmail.com',

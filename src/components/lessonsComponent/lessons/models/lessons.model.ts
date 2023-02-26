@@ -1,7 +1,7 @@
 import { Column, DataType, HasMany, Table } from 'sequelize-typescript';
 import { EntityModel } from '../../../../classes/core/entity.model';
 import { LessonsInCourses } from '../../lessonsInCourses/models/lessons-in-courses.model';
-import { LessonSchedule } from '../../lessonsSchedule/models/lesson-schedule.model';
+import { LessonSchedule } from '../../lessonSchedule/models/lesson-schedule.model';
 
 interface LessonsCreationAttrs {
   name: string;

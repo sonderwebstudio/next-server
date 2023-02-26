@@ -9,19 +9,19 @@ import {
   Put,
   UsePipes,
 } from '@nestjs/common';
-import { LessonScheduleService } from './lesson-schedule.service';
-import { LessonSchedule } from './models/lesson-schedule.model';
 import { ValidationPipe } from '../../../pipes/validation.pipe';
-import { CreateLessonScheduleDto } from './dto/create-lesson-schedule.dto';
-import { UpdateLessonScheduleDto } from './dto/update-lesson-schedule.dto';
 import { ROLES } from '../../../constants/roles.constants';
 import { RolesGuards } from '../../../decorators/roles-guards.decorator';
+import { CreateLessonScheduleDto } from './dto/create-lesson-schedule.dto';
+import { LessonSchedule } from './models/lesson-schedule.model';
+import { LessonScheduleService } from './lesson-schedule.service';
+import { UpdateLessonScheduleDto } from './dto/update-lesson-schedule.dto';
 
 @Controller('/api/lesson-schedule')
 export class LessonScheduleController {
   constructor(private service: LessonScheduleService) {}
 
-  // @RolesGuards([ROLES.USER])
+  @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
@@ -33,7 +33,7 @@ export class LessonScheduleController {
     };
   }
 
-  // @RolesGuards([ROLES.USER])
+  @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
     response: LessonSchedule[];
@@ -45,7 +45,7 @@ export class LessonScheduleController {
     };
   }
 
-  // @RolesGuards([ROLES.USER])
+  @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(
     @Param('id') id: number,
@@ -56,7 +56,7 @@ export class LessonScheduleController {
     };
   }
 
-  // @RolesGuards([ROLES.USER])
+  @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(

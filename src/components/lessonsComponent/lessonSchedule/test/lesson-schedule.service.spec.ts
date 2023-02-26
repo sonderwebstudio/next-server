@@ -1,11 +1,11 @@
 import { Test } from '@nestjs/testing';
 import { getModelToken } from '@nestjs/sequelize';
-import { LessonScheduleModel } from '../__mocks__/lesson-schedule.model';
-import { lessonScheduleStub } from './stubs/lesson-schedule.stub';
 import { LessonScheduleService } from '../lesson-schedule.service';
 import { LessonSchedule } from '../models/lesson-schedule.model';
-import { lessonScheduleCreateStub } from './stubs/lesson-schedule-create.stub';
+import { LessonScheduleModel } from '../__mocks__/lesson-schedule.model';
+import { lessonScheduleStub } from './stubs/lesson-schedule.stub';
 import { lessonScheduleUpdateStub } from './stubs/lesson-schedule-update.stub';
+import { lessonScheduleCreateStub } from './stubs/lesson-schedule-create.stub';
 
 describe('LessonScheduleService', () => {
   let service: LessonScheduleService;
@@ -36,18 +36,18 @@ describe('LessonScheduleService', () => {
     });
 
     describe('when create is called', () => {
-      let completedLesson: LessonSchedule;
+      let lessonInCourse: LessonSchedule;
 
       beforeEach(async () => {
-        completedLesson = await service.create(lessonScheduleCreateStub());
+        lessonInCourse = await service.create(lessonScheduleCreateStub());
       });
 
       it('should call model create', () => {
         expect(model.create).toBeCalled();
       });
 
-      it('should return a completedLesson', () => {
-        expect(completedLesson).toBeDefined();
+      it('should return a lessonInCourse', () => {
+        expect(lessonInCourse).toBeDefined();
       });
     });
   });
@@ -80,18 +80,18 @@ describe('LessonScheduleService', () => {
     });
 
     describe('when findByPk is called', () => {
-      let completedLesson: LessonSchedule;
+      let lessonInCourse: LessonSchedule;
 
       beforeEach(async () => {
-        completedLesson = await service.findByPk(lessonScheduleStub().id);
+        lessonInCourse = await service.findByPk(lessonScheduleStub().id);
       });
 
       it('should call model findByPk', () => {
         expect(model.findByPk).toBeCalled();
       });
 
-      it('should return a completedLesson', () => {
-        expect(completedLesson).toEqual(lessonScheduleStub());
+      it('should return a lessonInCourse', () => {
+        expect(lessonInCourse).toEqual(lessonScheduleStub());
       });
     });
   });
