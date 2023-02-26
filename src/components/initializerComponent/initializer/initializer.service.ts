@@ -5,6 +5,7 @@ import { UsersService } from '../../usersComponent/users/users.service';
 import { Users } from '../../usersComponent/users/models/users.model';
 import { Roles } from '../../../components/usersComponent/roles/models/roles.model';
 import { WeeksService } from '../../../components/lessonsComponent/weeks/weeks.service';
+import { DaysService } from '../../../components/lessonsComponent/days/days.service';
 
 @Injectable()
 export class InitializerService {
@@ -12,6 +13,7 @@ export class InitializerService {
     private rolesService: RolesService,
     private usersService: UsersService,
     private weeksService: WeeksService,
+    private daysService: DaysService,
   ) {}
 
   async initialization() {
@@ -24,6 +26,7 @@ export class InitializerService {
     await this.findOrCreateAdminAccount();
     await this.findOrCreateUserAccount();
     await this.createWeeks();
+    await this.createDays();
   }
 
   private static async findOrCreateSimpleConstants(data) {
@@ -71,6 +74,24 @@ export class InitializerService {
     for (let i = 1; i <= 14; i++) {
       await this.weeksService.create({
         name: `Неделя ${i}`,
+      });
+    }
+  }
+
+  private async createDays() {
+    const days = [
+      'Грудь',
+      'Пресс',
+      'Спина',
+      'Ноги',
+      'Отдых',
+      'Пресс BSU',
+      'Кардио',
+      'Все тело',
+    ];
+    for (let key of days) {
+      await this.daysService.create({
+        name: key,
       });
     }
   }
