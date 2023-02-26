@@ -1,4 +1,4 @@
-import { Courses } from '../../models/courses.model';
+import { Courses } from '../../models/courses.model'
 
 export const coursesStub = (): Courses => {
   return <Courses>{
@@ -6,5 +6,5 @@ export const coursesStub = (): Courses => {
     name: 'First lesson',
     image: 'uploads/test.jpg',
     description: 'random',
-  };
-};
+  }
+}

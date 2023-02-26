@@ -1,15 +1,15 @@
-import { Test } from '@nestjs/testing';
-import { getModelToken } from '@nestjs/sequelize';
-import { CompletedLessonsModel } from '../__mocks__/completed-lessons.model';
-import { completedLessonsStub } from './stubs/completed-lessons.stub';
-import { CompletedLessonsService } from '../completed-lessons.service';
-import { CompletedLessons } from '../models/completed-lessons.model';
-import { completedLessonsCreateStub } from './stubs/completed-lessons-create.stub';
-import { completedLessonsUpdateStub } from './stubs/completed-lessons-update.stub';
+import { Test } from '@nestjs/testing'
+import { getModelToken } from '@nestjs/sequelize'
+import { CompletedLessonsModel } from '../__mocks__/completed-lessons.model'
+import { completedLessonsStub } from './stubs/completed-lessons.stub'
+import { CompletedLessonsService } from '../completed-lessons.service'
+import { CompletedLessons } from '../models/completed-lessons.model'
+import { completedLessonsCreateStub } from './stubs/completed-lessons-create.stub'
+import { completedLessonsUpdateStub } from './stubs/completed-lessons-update.stub'
 
 describe('CompletedLessonsService', () => {
-  let service: CompletedLessonsService;
-  let model: typeof CompletedLessons;
+  let service: CompletedLessonsService
+  let model: typeof CompletedLessons
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -20,125 +20,123 @@ describe('CompletedLessonsService', () => {
           useValue: CompletedLessonsModel,
         },
       ],
-    }).compile();
+    }).compile()
 
-    service = module.get<CompletedLessonsService>(CompletedLessonsService);
-    model = module.get<typeof CompletedLessons>(
-      getModelToken(CompletedLessons),
-    );
-  });
+    service = module.get<CompletedLessonsService>(CompletedLessonsService)
+    model = module.get<typeof CompletedLessons>(getModelToken(CompletedLessons))
+  })
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
+    expect(service).toBeDefined()
+  })
 
   describe('create', () => {
     it('should be defined', () => {
-      expect(service.create).toBeDefined();
-    });
+      expect(service.create).toBeDefined()
+    })
 
     describe('when create is called', () => {
-      let completedLesson: CompletedLessons;
+      let completedLesson: CompletedLessons
 
       beforeEach(async () => {
-        completedLesson = await service.create(completedLessonsCreateStub());
-      });
+        completedLesson = await service.create(completedLessonsCreateStub())
+      })
 
       it('should call model create', () => {
-        expect(model.create).toBeCalled();
-      });
+        expect(model.create).toBeCalled()
+      })
 
       it('should return a completedLesson', () => {
-        expect(completedLesson).toBeDefined();
-      });
-    });
-  });
+        expect(completedLesson).toBeDefined()
+      })
+    })
+  })
 
   describe('findAll', () => {
     it('should be defined', () => {
-      expect(service.findAll).toBeDefined();
-    });
+      expect(service.findAll).toBeDefined()
+    })
 
     describe('when findAll is called', () => {
-      let completedLessons: CompletedLessons[];
+      let completedLessons: CompletedLessons[]
 
       beforeEach(async () => {
-        completedLessons = await service.findAll();
-      });
+        completedLessons = await service.findAll()
+      })
 
       it('should call model findAll', () => {
-        expect(model.findAll).toBeCalled();
-      });
+        expect(model.findAll).toBeCalled()
+      })
 
       it('should return a completedLessons', () => {
-        expect(completedLessons).toEqual([completedLessonsStub()]);
-      });
-    });
-  });
+        expect(completedLessons).toEqual([completedLessonsStub()])
+      })
+    })
+  })
 
   describe('findByPk', () => {
     it('should be defined', () => {
-      expect(service.findByPk).toBeDefined();
-    });
+      expect(service.findByPk).toBeDefined()
+    })
 
     describe('when findByPk is called', () => {
-      let completedLesson: CompletedLessons;
+      let completedLesson: CompletedLessons
 
       beforeEach(async () => {
-        completedLesson = await service.findByPk(completedLessonsStub().id);
-      });
+        completedLesson = await service.findByPk(completedLessonsStub().id)
+      })
 
       it('should call model findByPk', () => {
-        expect(model.findByPk).toBeCalled();
-      });
+        expect(model.findByPk).toBeCalled()
+      })
 
       it('should return a completedLesson', () => {
-        expect(completedLesson).toEqual(completedLessonsStub());
-      });
-    });
-  });
+        expect(completedLesson).toEqual(completedLessonsStub())
+      })
+    })
+  })
 
   describe('update', () => {
     it('should be defined', () => {
-      expect(service.update).toBeDefined();
-    });
+      expect(service.update).toBeDefined()
+    })
 
     describe('when update is called', () => {
-      let result: number[];
+      let result: number[]
 
       beforeEach(async () => {
-        result = await service.update(completedLessonsUpdateStub());
-      });
+        result = await service.update(completedLessonsUpdateStub())
+      })
 
       it('should call model update', () => {
-        expect(model.update).toBeCalled();
-      });
+        expect(model.update).toBeCalled()
+      })
 
       it('should return a number of updated records', () => {
-        expect(result).toEqual(1);
-      });
-    });
-  });
+        expect(result).toEqual(1)
+      })
+    })
+  })
 
   describe('destroy', () => {
     it('should be defined', () => {
-      expect(service.destroy).toBeDefined();
-    });
+      expect(service.destroy).toBeDefined()
+    })
 
     describe('when destroy is called', () => {
-      let result: number;
+      let result: number
 
       beforeEach(async () => {
-        result = await service.destroy(completedLessonsStub().id);
-      });
+        result = await service.destroy(completedLessonsStub().id)
+      })
 
       it('should call model destroy', () => {
-        expect(model.destroy).toBeCalled();
-      });
+        expect(model.destroy).toBeCalled()
+      })
 
       it('should return a number of deleted records', () => {
-        expect(result).toEqual(1);
-      });
-    });
-  });
-});
+        expect(result).toEqual(1)
+      })
+    })
+  })
+})

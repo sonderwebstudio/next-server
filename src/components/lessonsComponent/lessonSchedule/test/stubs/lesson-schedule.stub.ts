@@ -1,4 +1,4 @@
-import { LessonSchedule } from '../../models/lesson-schedule.model';
+import { LessonSchedule } from '../../models/lesson-schedule.model'
 
 export const lessonScheduleStub = (): LessonSchedule => {
   return <LessonSchedule>{
@@ -6,5 +6,5 @@ export const lessonScheduleStub = (): LessonSchedule => {
     lesson_id: 1,
     week_id: 1,
     day_id: 1,
-  };
-};
+  }
+}

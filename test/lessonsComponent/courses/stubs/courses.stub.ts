@@ -1,4 +1,4 @@
-import { Courses } from '../../../../src/components/lessonsComponent/courses/models/courses.model';
+import { Courses } from '../../../../src/components/lessonsComponent/courses/models/courses.model'
 
 export const coursesStub = (): Courses => {
   return <Courses>{
@@ -8,5 +8,5 @@ export const coursesStub = (): Courses => {
     description: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

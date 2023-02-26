@@ -1,4 +1,4 @@
-import { Users } from '../../../../src/components/usersComponent/users/models/users.model';
+import { Users } from '../../../../src/components/usersComponent/users/models/users.model'
 
 export const usersStub = (): Users => {
   return <Users>{
@@ -8,8 +8,8 @@ export const usersStub = (): Users => {
     roles: expect.any(Array),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}
 
 export const usersStubWithoutRoles = (): Users => {
   return <Users>{
@@ -18,5 +18,5 @@ export const usersStubWithoutRoles = (): Users => {
     password: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

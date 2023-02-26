@@ -1,4 +1,4 @@
-import { Days } from '../../../../src/components/lessonsComponent/days/models/days.model';
+import { Days } from '../../../../src/components/lessonsComponent/days/models/days.model'
 
 export const daysStub = (): Days => {
   return <Days>{
@@ -6,5 +6,5 @@ export const daysStub = (): Days => {
     name: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

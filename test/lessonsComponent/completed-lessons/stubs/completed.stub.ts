@@ -1,4 +1,4 @@
-import { CompletedLessons } from '../../../../src/components/lessonsComponent/completed-lessons/models/completed-lessons.model';
+import { CompletedLessons } from '../../../../src/components/lessonsComponent/completed-lessons/models/completed-lessons.model'
 
 export const completedLessonsStub = (): CompletedLessons => {
   return <CompletedLessons>{
@@ -7,5 +7,5 @@ export const completedLessonsStub = (): CompletedLessons => {
     user_id: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

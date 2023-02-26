@@ -1,4 +1,4 @@
-import { WeeksStub } from '../test/stubs/weeks.stub';
+import { WeeksStub } from '../test/stubs/weeks.stub'
 
 export const WeeksService = jest.fn().mockReturnValue({
   create: jest.fn().mockResolvedValue(WeeksStub()),
@@ -7,4 +7,4 @@ export const WeeksService = jest.fn().mockReturnValue({
   findByName: jest.fn().mockResolvedValue(WeeksStub()),
   update: jest.fn().mockResolvedValue({ affectedCount: 1 }),
   destroy: jest.fn().mockResolvedValue(1),
-});
+})

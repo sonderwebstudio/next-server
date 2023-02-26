@@ -1,10 +1,10 @@
-import { IsArray, IsNumber, IsOptional } from 'class-validator';
+import { IsArray, IsNumber, IsOptional } from 'class-validator'
 
 export class ParseArrayDto {
   @IsArray()
-  data: [string[]];
+  data: [string[]]
 
   @IsOptional()
   @IsNumber({}, { message: 'The value must be a number' })
-  client_id: number;
+  client_id: number
 }

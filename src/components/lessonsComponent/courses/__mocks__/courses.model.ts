@@ -1,22 +1,22 @@
-import { coursesStub } from '../test/stubs/courses.stub';
+import { coursesStub } from '../test/stubs/courses.stub'
 
 export const CoursesModel = {
   create: jest.fn().mockImplementation(() => {
-    return coursesStub();
+    return coursesStub()
   }),
   findAll: jest.fn().mockImplementation(() => {
-    return [coursesStub()];
+    return [coursesStub()]
   }),
   findOne: jest.fn().mockImplementation(() => {
-    return coursesStub();
+    return coursesStub()
   }),
   findByPk: jest.fn().mockImplementation(() => {
-    return coursesStub();
+    return coursesStub()
   }),
   update: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
   destroy: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
-};
+}

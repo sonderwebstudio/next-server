@@ -1,22 +1,22 @@
-import { WeeksStub } from '../test/stubs/weeks.stub';
+import { WeeksStub } from '../test/stubs/weeks.stub'
 
 export const WeeksModel = {
   create: jest.fn().mockImplementation(() => {
-    return WeeksStub();
+    return WeeksStub()
   }),
   findAll: jest.fn().mockImplementation(() => {
-    return [WeeksStub()];
+    return [WeeksStub()]
   }),
   findOne: jest.fn().mockImplementation(() => {
-    return WeeksStub();
+    return WeeksStub()
   }),
   findByPk: jest.fn().mockImplementation(() => {
-    return WeeksStub();
+    return WeeksStub()
   }),
   update: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
   destroy: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
-};
+}

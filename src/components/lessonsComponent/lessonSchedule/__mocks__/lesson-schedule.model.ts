@@ -1,22 +1,22 @@
-import { lessonScheduleStub } from '../test/stubs/lesson-schedule.stub';
+import { lessonScheduleStub } from '../test/stubs/lesson-schedule.stub'
 
 export const LessonScheduleModel = {
   create: jest.fn().mockImplementation(() => {
-    return lessonScheduleStub();
+    return lessonScheduleStub()
   }),
   findAll: jest.fn().mockImplementation(() => {
-    return [lessonScheduleStub()];
+    return [lessonScheduleStub()]
   }),
   findOne: jest.fn().mockImplementation(() => {
-    return lessonScheduleStub();
+    return lessonScheduleStub()
   }),
   findByPk: jest.fn().mockImplementation(() => {
-    return lessonScheduleStub();
+    return lessonScheduleStub()
   }),
   update: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
   destroy: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
-};
+}

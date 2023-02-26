@@ -1,4 +1,4 @@
-import { lessonsInCoursesStub } from '../test/stubs/lessons-in-courses.stub';
+import { lessonsInCoursesStub } from '../test/stubs/lessons-in-courses.stub'
 
 export const LessonsInCoursesService = jest.fn().mockReturnValue({
   create: jest.fn().mockResolvedValue(lessonsInCoursesStub()),
@@ -7,4 +7,4 @@ export const LessonsInCoursesService = jest.fn().mockReturnValue({
   findByName: jest.fn().mockResolvedValue(lessonsInCoursesStub()),
   update: jest.fn().mockResolvedValue({ affectedCount: 1 }),
   destroy: jest.fn().mockResolvedValue(1),
-});
+})

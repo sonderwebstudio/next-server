@@ -1,9 +1,9 @@
-import { Column, DataType, HasMany, Table } from 'sequelize-typescript';
-import { EntityModel } from '../../../../classes/core/entity.model';
-import { LessonSchedule } from '../../lessonSchedule/models/lesson-schedule.model';
+import { Column, DataType, HasMany, Table } from 'sequelize-typescript'
+import { EntityModel } from '../../../../classes/core/entity.model'
+import { LessonSchedule } from '../../lessonSchedule/models/lesson-schedule.model'
 
 interface WeeksCreationAttrs {
-  name: string;
+  name: string
 }
 
 @Table({ tableName: 'Weeks' })
@@ -14,11 +14,11 @@ export class Weeks extends EntityModel<Weeks, WeeksCreationAttrs> {
     autoIncrement: true,
     primaryKey: true,
   })
-  id: number;
+  id: number
 
   @Column({ type: DataType.STRING, allowNull: false })
-  name: string;
+  name: string
 
   @HasMany(() => LessonSchedule)
-  lessonSchedule: LessonSchedule[];
+  lessonSchedule: LessonSchedule[]
 }

@@ -1,4 +1,4 @@
-import { LessonsInCourses } from '../../../../src/components/lessonsComponent/lessonsInCourses/models/lessons-in-courses.model';
+import { LessonsInCourses } from '../../../../src/components/lessonsComponent/lessonsInCourses/models/lessons-in-courses.model'
 
 export const lessonsInCoursesStub = (): LessonsInCourses => {
   return <LessonsInCourses>{
@@ -7,5 +7,5 @@ export const lessonsInCoursesStub = (): LessonsInCourses => {
     course_id: expect.any(Number),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

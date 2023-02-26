@@ -1,4 +1,4 @@
-import { Lessons } from '../../../../src/components/lessonsComponent/lessons/models/lessons.model';
+import { Lessons } from '../../../../src/components/lessonsComponent/lessons/models/lessons.model'
 
 export const lessonsStub = (): Lessons => {
   return <Lessons>{
@@ -7,5 +7,5 @@ export const lessonsStub = (): Lessons => {
     image: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

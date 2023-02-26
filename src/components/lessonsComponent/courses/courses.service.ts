@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { Courses } from './models/courses.model';
-import { EntityService } from '../../../classes/core/entity.service';
-import { findByName } from '../../../traits/find-by.trait';
+import { Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/sequelize'
+import { Courses } from './models/courses.model'
+import { EntityService } from '../../../classes/core/entity.service'
+import { findByName } from '../../../traits/find-by.trait'
 
 @Injectable()
 export class CoursesService extends EntityService<Courses> {
@@ -10,8 +10,8 @@ export class CoursesService extends EntityService<Courses> {
     @InjectModel(Courses)
     protected repository: typeof Courses,
   ) {
-    super(repository);
+    super(repository)
   }
 
-  findByName = findByName;
+  findByName = findByName
 }

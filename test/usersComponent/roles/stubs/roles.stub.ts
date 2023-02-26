@@ -1,4 +1,4 @@
-import { Roles } from '../../../../src/components/usersComponent/roles/models/roles.model';
+import { Roles } from '../../../../src/components/usersComponent/roles/models/roles.model'
 
 export const rolesStub = (): Roles => {
   return <Roles>{
@@ -6,5 +6,5 @@ export const rolesStub = (): Roles => {
     name: expect.any(String),
     createdAt: expect.any(String),
     updatedAt: expect.any(String),
-  };
-};
+  }
+}

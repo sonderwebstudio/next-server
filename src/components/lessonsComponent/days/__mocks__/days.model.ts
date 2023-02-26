@@ -1,22 +1,22 @@
-import { DaysStub } from '../test/stubs/days.stub';
+import { DaysStub } from '../test/stubs/days.stub'
 
 export const DaysModel = {
   create: jest.fn().mockImplementation(() => {
-    return DaysStub();
+    return DaysStub()
   }),
   findAll: jest.fn().mockImplementation(() => {
-    return [DaysStub()];
+    return [DaysStub()]
   }),
   findOne: jest.fn().mockImplementation(() => {
-    return DaysStub();
+    return DaysStub()
   }),
   findByPk: jest.fn().mockImplementation(() => {
-    return DaysStub();
+    return DaysStub()
   }),
   update: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
   destroy: jest.fn().mockImplementation(() => {
-    return 1;
+    return 1
   }),
-};
+}
