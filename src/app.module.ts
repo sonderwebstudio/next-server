@@ -13,8 +13,7 @@ import { LessonsInCoursesModule } from './components/lessonsComponent/lessonsInC
 import { WeeksModule } from './components/lessonsComponent/weeks/weeks.module';
 import { FilesModule } from './components/filesComponent/files/files.module';
 import { CoursesModule } from './components/lessonsComponent/courses/courses.module';
-import { LessonSchedule } from './components/lessonsComponent/lessonsSchedule/models/lesson-schedule.model';
-import { LessonScheduleModule } from './components/lessonsComponent/lessonsSchedule/lesson-schedule.module';
+import { LessonScheduleModule } from './components/lessonsComponent/lessonSchedule/lesson-schedule.module';
 
 @Module({
   imports: [
