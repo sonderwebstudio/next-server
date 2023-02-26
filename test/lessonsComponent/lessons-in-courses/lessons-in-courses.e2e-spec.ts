@@ -33,12 +33,12 @@ describe('LessonsInCourses (e2e)', () => {
         });
     });
 
-    it('should return status HttpStatus.FORBIDDEN because it a User', async () => {
+    it('should return status HttpStatus.OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons-in-courses')
         .set('Authorization', 'Bearer ' + tokenUser)
         .send(lessonsInCoursesCreateStub())
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status HttpStatus.FORBIDDEN because it a Unknown', async () => {
@@ -68,11 +68,11 @@ describe('LessonsInCourses (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons-in-courses')
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {

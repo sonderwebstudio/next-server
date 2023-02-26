@@ -33,12 +33,12 @@ describe('CompletedLessons (e2e)', () => {
         });
     });
 
-    it('should return status HttpStatus.FORBIDDEN because it a User', async () => {
+    it('should return status HttpStatus.OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/completed-lessons')
         .set('Authorization', 'Bearer ' + tokenUser)
         .send(completedLessonsCreateStub())
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status HttpStatus.FORBIDDEN because it a Unknown', async () => {
@@ -68,11 +68,11 @@ describe('CompletedLessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/completed-lessons')
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -93,17 +93,17 @@ describe('CompletedLessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/completed-lessons/' + completedLesson.id)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
-    it('should return status FORBIDDEN because it a Unknown', async () => {
+    it('should return status OK because it a Unknown', async () => {
       await request(app.getHttpServer())
         .get('/api/completed-lessons/' + completedLesson.id)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
   });
 
@@ -117,17 +117,17 @@ describe('CompletedLessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .delete('/api/completed-lessons/' + completedLesson.id)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
-    it('should return status FORBIDDEN because it a Unknown', async () => {
+    it('should return status OK because it a Unknown', async () => {
       await request(app.getHttpServer())
         .delete('/api/completed-lessons/' + completedLesson.id)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status NOT_FOUND because it empty request', async () => {

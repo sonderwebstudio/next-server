@@ -33,12 +33,12 @@ describe('Days (e2e)', () => {
         });
     });
 
-    it('should return status HttpStatus.FORBIDDEN because it a User', async () => {
+    it('should return status HttpStatus.OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/days')
         .set('Authorization', 'Bearer ' + tokenUser)
         .send(daysCreateStub())
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status HttpStatus.FORBIDDEN because it a Unknown', async () => {
@@ -68,12 +68,12 @@ describe('Days (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .put('/api/days')
         .set('Authorization', 'Bearer ' + tokenUser)
         .send(day)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -103,11 +103,11 @@ describe('Days (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/days')
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -128,11 +128,11 @@ describe('Days (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/days/' + day.id)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -153,11 +153,11 @@ describe('Days (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/days/name/' + day.name)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {

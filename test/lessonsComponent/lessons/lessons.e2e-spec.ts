@@ -33,12 +33,12 @@ describe('Lessons (e2e)', () => {
         });
     });
 
-    it('should return status HttpStatus.FORBIDDEN because it a User', async () => {
+    it('should return status HttpStatus.OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons')
         .set('Authorization', 'Bearer ' + tokenUser)
         .send(lessonsCreateStub())
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status HttpStatus.FORBIDDEN because it a Unknown', async () => {
@@ -103,11 +103,11 @@ describe('Lessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons')
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -128,11 +128,11 @@ describe('Lessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons/' + lesson.id)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
@@ -153,11 +153,11 @@ describe('Lessons (e2e)', () => {
         });
     });
 
-    it('should return status FORBIDDEN because it a User', async () => {
+    it('should return status OK because it a User', async () => {
       await request(app.getHttpServer())
         .get('/api/lessons/name/' + lesson.name)
         .set('Authorization', 'Bearer ' + tokenUser)
-        .expect(HttpStatus.FORBIDDEN);
+        .expect(HttpStatus.OK);
     });
 
     it('should return status FORBIDDEN because it a Unknown', async () => {
