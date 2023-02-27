@@ -21,7 +21,7 @@ import { RolesGuards } from '../../../decorators/roles-guards.decorator'
 export class WeeksController {
   constructor(private service: WeeksService) {}
 
-  @RolesGuards([ROLES.USER])
+  @RolesGuards([ROLES.ADMIN])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
