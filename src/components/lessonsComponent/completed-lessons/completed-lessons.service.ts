@@ -22,7 +22,6 @@ export class CompletedLessonsService extends EntityService<CompletedLessons> {
     const results = await this.repository.findAll({
       attributes: ['lesson_schedule_id'],
     })
-    results.map((result) => console.log(result.lesson_schedule_id))
 
     return results.map((result) => result.lesson_schedule_id)
   }
