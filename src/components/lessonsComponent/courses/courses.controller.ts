@@ -21,7 +21,7 @@ import { RolesGuards } from '../../../decorators/roles-guards.decorator'
 export class CoursesController {
   constructor(private service: CoursesService) {}
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Post()
   async create(
@@ -33,7 +33,7 @@ export class CoursesController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
     response: Courses[]
@@ -45,7 +45,7 @@ export class CoursesController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(@Param('id') id: number): Promise<{ response: Courses; statusCode: number }> {
     return {
@@ -54,7 +54,7 @@ export class CoursesController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(@Body() dto: UpdateCoursesDto): Promise<{ response: number[]; statusCode: number }> {
@@ -64,7 +64,7 @@ export class CoursesController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get('/name/:name')
   async findByName(
     @Param('name') name: string,

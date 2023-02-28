@@ -45,7 +45,7 @@ export class LessonsInCoursesService extends EntityService<LessonsInCourses> {
       where: { course_id: id },
     })
 
-    const lessons = await Promise.all(
+    let lessons = await Promise.all(
       courses.map(async (course) => {
         const lesson = await LessonSchedule.findOne({
           where: {
@@ -55,40 +55,35 @@ export class LessonsInCoursesService extends EntityService<LessonsInCourses> {
             {
               model: Lessons,
             },
-            {
-              model: Days,
-            },
           ],
         })
         return lesson
       }),
     )
 
-    const groupedLessonsByWeek = lessons.reduce((acc, lesson) => {
-      const weekIndex = lesson.week_id - 1
-      if (!acc[weekIndex]) {
-        acc[weekIndex] = []
+    lessons = lessons.filter((lesson) => lesson !== null)
+
+    const groupedLessons = lessons.reduce((acc, lesson) => {
+      if (!acc[lesson.week_id]) {
+        acc[lesson.week_id] = {}
       }
-      acc[weekIndex].push(lesson)
+      if (!acc[lesson.week_id][lesson.day_id]) {
+        acc[lesson.week_id][lesson.day_id] = []
+      }
+      acc[lesson.week_id][lesson.day_id].push(lesson)
       return acc
-    }, [])
+    }, {})
 
-    const sortedLessonsByWeek = groupedLessonsByWeek.map((weekLessons) => {
-      const groupedLessonsByDay = weekLessons.reduce((acc, lesson) => {
-        const dayIndex = lesson.day_id - 1
-        if (!acc[dayIndex]) {
-          acc[dayIndex] = []
-        }
-        acc[dayIndex].push(lesson)
-        return acc
-      }, [])
-      return groupedLessonsByDay
-    })
-
-    const filteredLessons = sortedLessonsByWeek.map((weekLessons) =>
-      weekLessons.filter((dayLessons) => dayLessons.length > 0),
+    const sortedWeeks = Object.entries(groupedLessons).sort(
+      ([weekIdA], [weekIdB]) => Number(weekIdA) - Number(weekIdB),
     )
 
-    return filteredLessons
+    const sortedLessonsArray = sortedWeeks.map(([_, days]) =>
+      Object.entries(days)
+        .sort(([dayIdA], [dayIdB]) => Number(dayIdA) - Number(dayIdB))
+        .map(([_, lessons]) => lessons),
+    )
+
+    return sortedLessonsArray
   }
 }

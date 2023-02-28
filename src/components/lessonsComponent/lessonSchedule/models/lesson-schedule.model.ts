@@ -9,6 +9,7 @@ interface LessonScheduleCreationAttrs {
   lesson_id: number
   week_id: number
   day_id: number
+  name: string
   deleted_at: string | null
   deleted_by: string | null
 }
@@ -28,6 +29,9 @@ export class LessonSchedule extends EntityModel<LessonSchedule, LessonScheduleCr
 
   @Column({ type: DataType.STRING })
   deleted_by: string | null
+
+  @Column({ type: DataType.STRING })
+  name: string
 
   @ForeignKey(() => Lessons)
   @Column({ type: DataType.INTEGER, allowNull: false })

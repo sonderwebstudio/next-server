@@ -33,7 +33,7 @@ export class WeeksController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get()
   async findAll(): Promise<{
     response: Weeks[]
@@ -45,7 +45,7 @@ export class WeeksController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get('/:id')
   async findByPk(@Param('id') id: number): Promise<{ response: Weeks; statusCode: number }> {
     return {
@@ -54,7 +54,7 @@ export class WeeksController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @UsePipes(ValidationPipe)
   @Put()
   async update(@Body() dto: UpdateWeeksDto): Promise<{ response: number[]; statusCode: number }> {
@@ -64,7 +64,7 @@ export class WeeksController {
     }
   }
 
-  @RolesGuards([ROLES.USER])
+  // @RolesGuards([ROLES.USER])
   @Get('/name/:name')
   async findByName(@Param('name') name: string): Promise<{ response: Weeks; statusCode: number }> {
     return {

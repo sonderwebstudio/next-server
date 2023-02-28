@@ -6,6 +6,8 @@ import { Users } from '../../usersComponent/users/models/users.model'
 import { Roles } from '../../../components/usersComponent/roles/models/roles.model'
 import { WeeksService } from '../../../components/lessonsComponent/weeks/weeks.service'
 import { DaysService } from '../../../components/lessonsComponent/days/days.service'
+import { DAYS } from '../../../constants/days.constants'
+import { WEEKS } from '../../../constants/weeks.constants'
 
 @Injectable()
 export class InitializerService {
@@ -19,14 +21,15 @@ export class InitializerService {
   async initialization() {
     await InitializerService.findOrCreateSimpleConstants([
       { service: this.rolesService, constants: ROLES },
+      { service: this.daysService, constants: DAYS },
+      { service: this.weeksService, constants: WEEKS },
     ])
+
 
     await InitializerService.findOrCreateDifficultConstants([])
 
     await this.findOrCreateAdminAccount()
     await this.findOrCreateUserAccount()
-    await this.createWeeks()
-    await this.createDays()
   }
 
   private static async findOrCreateSimpleConstants(data) {
@@ -64,23 +67,6 @@ export class InitializerService {
           }
         }
       }
-    }
-  }
-
-  private async createWeeks() {
-    for (let i = 1; i <= 14; i++) {
-      await this.weeksService.create({
-        name: `Неделя ${i}`,
-      })
-    }
-  }
-
-  private async createDays() {
-    const days = ['Грудь', 'Пресс', 'Спина', 'Ноги', 'Отдых', 'Пресс BSU', 'Кардио', 'Все тело']
-    for (let key of days) {
-      await this.daysService.create({
-        name: key,
-      })
     }
   }
 
